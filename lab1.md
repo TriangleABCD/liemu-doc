@@ -106,6 +106,12 @@ cd600313
 0000006f
 ```
 
+之后打开 `Makefile` 文件，将其中的 `INST_NAME` 的值改为 `lab1`。
+
+```makefile
+INST_NAME=lab1
+```
+
 然后在 `liemu` 目录下运行 `make run`，输入 `si 114` 执行完所有指令查看输出结果，如果输出结果如下，说明你的实现的计算结果是正确的。
 
 ```bash
