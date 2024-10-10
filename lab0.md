@@ -42,6 +42,15 @@ git clone https://gitee.com/wangyaoyong/liemu.git
 
 如果你善于使用 `git` 维护自己的代码，那么建议先 fork 该仓库，然后再 clone 你自己的仓库。
 
+`liemu` 使用 `make` 来构建项目，你可以在项目根目录下看到 `Makefile` 文件。
+
+在项目根目录下，你可以使用以下命令：
+
+- `make` : 编译项目。
+- `make run` : 编译并运行项目。
+- `make clean` : 清理项目。
+- `make gdb` : 使用 `gdb` 调试项目。
+
 编译项目:
 
 ```bash
@@ -55,18 +64,50 @@ make run
 (liemu)
 ```
 
-尝试输入 `help` 然后回车，自行探索一下 `liemu` 的功能吧。
+尝试输入 `help`，你会看到所有内置命令的提示。
+
+```bash
+(liemu)help
+help:	show this help info
+q:      quit liemu
+clear:	clear the screen
+c:	    continue to execute next instructions
+si:	    si [N], execute N steps
+info:	info r/w [reg_name/watchpoint], show reg/watchpoint value
+x:	    x addr, print mem value on addr
+xx:	    x addr, print mem value in cache on addr
+ls:	    enable listing instructions automaticlly
+w:	    add a watch point
+d:	    d watchpoint delete a watch point
+hit:	show cache hit rate
+trap:	trap [trap_num], trigger a trap
+queue:	show trap queue
+```
+
+- `help` : 显示帮助信息。
+- `q` : 退出 `liemu`。
+- `clear` : 清空屏幕。
+- `c` : 继续执行剩余指令。
+- `si` : 执行 N 条指令，例如 `si 5` 表示执行后续 5 条指令，如果不带参数，则默认执行 1 条指令。
+- `info` : 显示寄存器或监视点的值，例如 `info r` 显示所有寄存器的值，`info r reg_1 reg_2` 会显示对应名称的寄存器的值。`info w` 显示所有监视点的值。
+- `x` : 显示内存地址的值，例如 `x 0x80000000` 显示地址 `0x80000000` 的值。
+- `xx` : 显示缓存中的内存地址的值，例如 `xx 0x80000000` 显示地址 `0x80000000` 的值。LAB2 后才可使用。
+- `ls` : 打印当前指令附近的指令。
+- `w` : 添加一个监视点，例如 `w 0x80000000` 添加一个监视点到地址 `0x80000000`。
+- `d` : 删除一个监视点，例如 `d 2` 删除第 2 号监视点。
+- `hit` : 显示缓存命中率。LAB2 后才可使用。
+- `trap` : 触发一个异常，例如 `trap 1` 触发一个编号为 1 的异常。LAB4 后才可使用。
+- `queue` : 显示异常队列。LAB4 后才可使用。
 
 ## RTFSC
 
-这是必不可少的环节，不阅读源码，你将无法理解 LAB0 的任务，更无法完成后续的实验内容。至于如何阅读源码，我想大家都有自己的方法，这里完全不需要避讳使用 AI 来帮助你理解代码。当然，你至少应该知道从哪里开始阅读代码。
+这是必不可少的环节，不阅读源码，你将无法理解 LAB0 的任务，更无法完成后续的实验内容。这里完全不需要避讳使用 AI 来帮助你理解代码。当然，你至少应该知道从哪里开始阅读代码。
 
 `liemu` 的源码都在 `src` 目录下，其中只有一个 `cpp` 文件，其余模块均采用头文件的形式。
 
 ## 任务
 
-在初步阅读了代码之后，你需要完成一些任务，以检验你是否真的阅读了主要代码。同时也设置了简答题，帮助你更好地理解代码，如果你在阅读代码时对某些地方感到困惑，在向 AI 提问之前，不妨先思考一下这些简答题。
-
+在初步阅读了代码之后，你需要完成一些任务，以检验你是否真的阅读了主要代码。
 ### Task 0 简答题
 
 回答言之有理即可，不要求过于详细。
