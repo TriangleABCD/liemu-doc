@@ -171,7 +171,7 @@ mstatus:
 输入 `info r a0 t1 sp` 会只打印这三个寄存器的信息，例如下面这样：
 
 ```bash
-(liemu)info a0 t1 sp
+(liemu)info r a0 t1 sp
 a0:	0x0000abde
 t1:	0x0000abde
 sp:	0x83ffdc00
